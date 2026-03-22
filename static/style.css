@@ -1,0 +1,247 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Poppins, sans-serif;
+  background: url("../static/plants.jpg") center/cover no-repeat;
+  color: #fff;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 0;
+}
+
+.glass-container {
+  z-index: 1;
+  width: 540px; /* wider like reference */
+  padding: 45px 48px;
+  text-align: center;
+  background: rgba(255,255,255,0.12);
+  border-radius: 25px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.glass-container h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+.glass-container p {
+  margin-top: 0;
+  margin-bottom: 22px;
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+ .drop-area {
+  border: 2px dashed rgba(255,255,255,0.45);
+  height: 170px;
+  border-radius: 20px;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.upload-btn {
+  margin-top: 12px;
+  padding: 10px 22px;
+  background: rgba(255,255,255,0.28);
+  border: 1px solid rgba(255,255,255,0.38);
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  transition: 0.2s ease-in-out;
+}
+
+.upload-btn:hover {
+  background: rgba(255,255,255,0.42);
+  transform: translateY(-1px);
+}
+
+
+#preview-image {
+  max-width: 250px;
+  border-radius: 15px;
+  display: none;
+  margin-top: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+.analyze-btn {
+  margin-top: 18px;
+  padding: 12px 25px;
+  background: #4CAF50;
+  color: white;
+  border-radius: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+
+
+.result-screen {
+  display: none;
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(15px);
+  z-index: 10;
+  color: white;
+  flex-direction: row;
+}
+
+
+
+.result-left, .result-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+}
+
+.result-left img {
+  max-width: 360px;
+  border-radius: 18px;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.5);
+  margin-bottom: 15px;
+}
+
+.img-box {
+  position: relative;
+  display: inline-block;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+  position: absolute;
+  top: -8px;         
+  right: -8px;       
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.95);
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  transition: 0.2s ease-in-out;
+}
+
+.close-btn:hover {
+  transform: scale(1.1);
+  background: white;
+}
+
+
+#solutionResult ul {
+  text-align: left;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  padding-left: 20px;
+}
+
+#solutionResult li {
+  margin-bottom: 8px;
+}
+
+
+/* Glass effect boxes on result screen */
+.result-box {
+  background: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(18px);
+  border-radius: 25px;
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 35px;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+}
+
+.preview-box {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-preview-box {
+  position: relative;
+  display: inline-block;
+}
+
+#preview-image {
+  max-width: 250px;
+  border-radius: 15px;
+  display: block;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+.preview-close-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.95);
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s ease-in-out;
+}
+
+.preview-close-btn:hover {
+  transform: scale(1.1);
+  background: white;
+}
+.drop-area.highlight {
+  border: 2px dashed #4caf50;
+  background-color: rgba(76, 175, 80, 0.1);
+  transition: 0.2s ease-in-out;
+}
+
