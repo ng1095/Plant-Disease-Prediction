@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Plant Disease Prediction</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="glass-container" id="uploadScreen">
+      <h1>🌿 Plant Disease Prediction</h1>
+      <p>Upload a leaf image to detect possible diseases using AI</p>
+
+      <div class="upload-box">
+        <div
+  id="drop-area"
+  class="drop-area"
+  onclick="document.getElementById('fileInput').click()"
+  ondragover="event.preventDefault(); this.classList.add('highlight');"
+  ondragleave="this.classList.remove('highlight');"
+  ondrop="handleDrop(event)"
+>
+  <input type="file" id="fileInput" accept="image/*" hidden />
+  <p>Drag & drop or click to browse</p>
+  <button class="upload-btn">Choose File</button>
+</div>
+
+
+        <div id="preview-container" class="preview-box" style="display: none">
+          <div class="img-preview-box">
+            <img id="preview-image" src="" />
+            <button id="clearPreviewBtn" class="preview-close-btn">×</button>
+          </div>
+        </div>
+
+        <button id="analyzeBtn" class="analyze-btn">
+          Analyze Plant Disease
+        </button>
+      </div>
+    </div>
+
+    <div id="resultScreen" class="result-screen">
+      <div class="result-left">
+        <div class="result-box">
+          <div class="img-box">
+            <img id="resultImage" />
+            <button class="close-btn" onclick="location.reload()">×</button>
+          </div>
+          <h2>Plant Diagnosis</h2>
+          <p id="predictionResult"></p>
+        </div>
+      </div>
+
+      <div class="result-right">
+        <div class="result-box">
+          <h2>Recommended Solution</h2>
+          <div id="solutionResult"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
